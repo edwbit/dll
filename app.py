@@ -24,41 +24,46 @@ def generate_lesson_plan(competency, subject, grade_level, strategies, content, 
     
 	Apply the following structure and the {language} language to generate the lesson plan:
 	
-    	A. Reviewing {past_lesson} or presenting the new lesson. Time limit is {part_a}
-		The teacher will activates prior knowledge based on {past_lesson} or introduces new topic.
-		The teacher will also ask 2 HOTS questions.
-		
-
-	B. Establishing a purpose for the lesson based on {competency}. Time limit is {part_b} 
-		The teacher will presents an engaging activity or question to spark interest
-		The teacher will also ask 2 HOTS questions.
-
-	C. Presenting examples/instances of the new lesson. Time limit is {part_c}
-		The teacher provides concrete examples or demonstrations of the new concept using 21st centutry skills strategies or {strategies}
-		
-
-	D. Discussing new concepts and practicing new skills #1. Time limit is {part_d}
-		The teacher explains new concepts and guides initial practice using 21st century skills strategies or {strategies}
-		
-
-	E. Discussing new concepts and practicing new skills #2. Time limit is {part_e}
-		Studentss are engage in addtional discussion and attempt to further apply new knowledge/skills using using 21st century skills strategies or {strategies}
-
-	F. Developing mastery. Time limit is {part_f}
-		The teacher provides opportunities for more independent practice
-		Students will practice applying new concepts/skills, demonstrating growing competence using 21st century skills strategies or {strategies}
-
-	G. Finding practical applications of concepts. Time limit is {part_g}
-		The teacher prompts students to consider real-world applications
-		The students will brainstorm and share ideas on how the learning applies to their lives using 21st century skills strategies or {strategies}
-
-	G. Making generalizations and abstractions about the lesson. Time limit is {part_h}
-		The teacher will facilitates discussion to summarize key points and broader implications
-		The students will articulate main ideas and how they connect to larger concepts
-
-	I. Evaluating learning. Time limit is {part_i}
-		The teacher will assign a task to assess understanding and application of learning in a form of a quiz
-		The students will complete the assigned task, demonstrating their grasp of the lesson content
+    	A. Reviewing or Presenting the New Lesson
+	Time Limit: {part_a}
+	Activate Prior Knowledge: Use questioning techniques to connect past lessons with the new topic, encouraging students to recall relevant information.
+	HOTS Questions: Ask two Higher Order Thinking Skills (HOTS) questions, such as:
+	"How does this concept relate to what we learned before?"
+	"Can you predict what might happen if we change one variable in this scenario?"
+	B. Establishing a Purpose for the Lesson
+	Time Limit: {part_b}
+	Engaging Activity: Present a thought-provoking question or a relevant real-world scenario that relates to the competency being addressed.
+	HOTS Questions: Include questions like:
+	"Why do you think this topic is important in our daily lives?"
+	"What implications could this have on our community?"
+	C. Presenting Examples/Instances of the New Lesson
+	Time Limit: {part_c}
+	Concrete Examples: Utilize multimedia resources or real-life demonstrations that incorporate 21st-century skills, such as critical thinking and collaboration.
+	Strategies: Implement cooperative learning by having students work in pairs or small groups to discuss examples.
+	D. Discussing New Concepts and Practicing New Skills #1
+	Time Limit: {part_d}
+	Guided Practice: Explain new concepts clearly, using visual aids and interactive discussions to facilitate understanding.
+	Strategies: Use think-pair-share to encourage peer interaction while practicing new skills.
+	E. Discussing New Concepts and Practicing New Skills #2
+	Time Limit: {part_e}
+	Additional Discussion: Facilitate deeper exploration of the topic through group discussions or debates, allowing students to express their thoughts.
+	Strategies: Encourage students to use digital tools for collaboration, enhancing communication skills.
+	F. Developing Mastery
+	Time Limit: {part_f}
+	Independent Practice: Provide opportunities for students to apply their knowledge independently through projects or assignments.
+	Strategies: Incorporate portfolio assessments where students can showcase their learning progress.
+	G. Finding Practical Applications of Concepts
+	Time Limit: {part_g}
+	Real-World Connections: Prompt students to brainstorm how the concepts learned can be applied in their lives or communities.
+	Strategies: Use project-based learning where students create solutions for local issues.
+	H. Making Generalizations and Abstractions about the Lesson
+	Time Limit: {part_h}
+	Facilitated Discussion: Summarize key points and encourage students to articulate main ideas and broader implications of the lesson.
+	Strategies: Implement graphic organizers to help visualize connections between concepts.
+	I. Evaluating Learning
+	Time Limit: {part_i}
+	Assessment Task: Assign a quiz or project that assesses understanding and application of the lesson content.
+	Strategies: Use formative assessments like exit tickets where students reflect on what they learned.
     
     Please format the output as follows:
     - Use '**' for bold text, not for bullet points
@@ -174,7 +179,7 @@ language = st.text_input("Language:", "required")
 competency = st.text_input("Competency:", "required")
 subject = st.text_input("Subject:", "required")
 grade_level = st.text_input("Grade level:", "required")
-strategies = st.text_input("Teaching strategies:", "required")
+strategies = st.text_input("Teaching strategies:", "Project-Based Learning, Collaborative Learning, Real-World Applications, Technology Integration,Differentiated Instruction ")
 content = st.text_input("Content:", "required")
 
 past_lesson = st.text_input("Past lesson:", "required")

@@ -25,6 +25,8 @@ def generate_lesson_plan(competency, subject, grade_level, selected_strategies, 
     Apply the following structure and the {language} language to generate the lesson plan using plain and simple words and in human-like tone:
     Be sure to use heading and bulleted list always.
 
+    Integration: Enumerate English, Math and Science integration to the subject if any.
+
     A. Reviewing or Presenting the New Lesson. Time Limit: {part_a} minutes.
     The teacher will use HOTS questioning techniques to connect past lessons with the new topic, encouraging students to recall relevant information.
     At least 2 questions. 
@@ -80,7 +82,7 @@ def format_lesson_plan(lesson_plan_data):
 
     for section in sections:
         lines = section.split('\n')
-        if lines[0].strip().startswith(('A.', 'B.', 'C.', 'D.', 'E.', 'F.', 'G.', 'H.', 'I.')):
+        if lines[0].strip().startswith(('Integration', 'A.', 'B.', 'C.', 'D.', 'E.', 'F.', 'G.', 'H.', 'I.')):
             formatted_plan += f"**{lines[0].strip()}**\n\n"
             formatted_plan += '\n'.join(lines[1:]).strip() + '\n\n'
         else:

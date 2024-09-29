@@ -12,7 +12,7 @@ client = Groq(api_key=api_key)
 my_llm = "llama-3.2-90b-text-preview"
 
 # Function to generate the lesson plan using AI
-def generate_lesson_plan(topic, subject, grade_level, strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_e, part_f, part_g, part_h, part_i):
+def generate_lesson_plan(topic, subject, grade_level, strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i):
     prompt = f"""
     Generate a lesson plan based on the following parameters:
     Competency: {topic}

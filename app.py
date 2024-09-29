@@ -132,12 +132,17 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
 st.markdown("""
 <style>
 .stTextInput > label {
-    font-size: 20px; /* Change font size */
-    font-weight: bold; /* Make the font bold */
-    color: blue; /* Change label color */
+    color: #e516a4d6; /* Change label color */
 }
 </style>
 """, unsafe_allow_html=True)
+
+st.markdown("""
+    <p style='font-weight: bold; font-size: 18px;'>
+        Grade Level:
+    </p>
+    """, unsafe_allow_html=True)
+
    
 # Streamlit app layout
 st.title("📚 DLL Generator with AI")

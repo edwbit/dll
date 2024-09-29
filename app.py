@@ -97,7 +97,7 @@ def format_lesson_plan(lesson_plan_data):
     return formatted_plan
 
 # Function to export the lesson plan to DOCX
-def export_to_docx(lesson_plan):
+def export_to_docx(lesson_plan, raw_lesson_plan):
     doc = Document()
     
     # Add title

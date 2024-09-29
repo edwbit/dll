@@ -3,6 +3,7 @@ import streamlit as st
 from io import BytesIO
 from docx import Document
 from docx.shared import Pt, Inches
+from docx.enum.style import WD_STYLE_TYPE
 from groq import Groq
 
 # Load the API key from Streamlit secrets
@@ -101,6 +102,15 @@ def format_lesson_plan(lesson_plan_data):
 def export_to_docx(lesson_plan, raw_lesson_plan):
     doc = Document()
     
+    # Create list styles if they don't exist
+    for i in range(1, 10):  # Create styles for up to 9 levels of indentation
+        style_name = f'List Bullet {i}'
+        if style_name not in doc.styles:
+            style = doc.styles.add_style(style_name, WD_STYLE_TYPE.PARAGRAPH)
+            style.base_style = doc.styles['Normal']
+            style.paragraph_format.left_indent = Inches(0.25 * (i-1))
+            style.paragraph_format.first_line_indent = Inches(-0.25)
+    
     # Add title
     title = lesson_plan.split('\n')[0].strip()
     doc.add_heading(title, level=1)
@@ -129,7 +139,7 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
         
         elif line.startswith('-'):
             # Bullet point
-            level = indent // 2  # Assuming 2 spaces per indentation level
+            level = min(indent // 2, 9)  # Limit to 9 levels
             p = doc.add_paragraph(line.lstrip('-').strip(), style=f'List Bullet {level + 1}')
             if line.startswith('-**'):
                 # Bullet point with bold text
@@ -172,7 +182,7 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
     # Preserve indentation in raw text
     for line in raw_lesson_plan.split('\n'):
         indent = get_indentation_level(line)
-        p = doc.add_paragraph(line.strip())
+        p = doc.add_paragraph(line.rstrip())
         p.paragraph_format.left_indent = Inches(indent / 8)  # Adjust as needed
     
     doc_file = BytesIO()

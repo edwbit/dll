@@ -149,7 +149,7 @@ st.caption(f"Generated using {my_llm}. Developed by ebb with AI assistance.")
 col1, col2 = st.columns(2)
 
 with col1:
-    language = st.text_input("Language:","english")
+    language = st.text_input("**Language**:","english")
     competency = st.text_input("Competency:", "required")
     subject = st.text_input("Subject:", "CSS")
     grade_level = st.text_input("Grade Level:", "11")

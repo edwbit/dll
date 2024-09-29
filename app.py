@@ -171,11 +171,13 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
             if in_list and not line[0].isdigit():
                 in_list = False
             p = doc.add_paragraph()
-            parts = line.split('**')
-            for i, part in enumerate(parts):
-                run = p.add_run(part.strip())
-                if i % 2 == 1:  # Odd-indexed parts were between ** in the original text
+            parts = re.split(r'(\*\*.*?\*\*)', line)
+            for part in parts:
+                if part.startswith('**') and part.endswith('**'):
+                    run = p.add_run(part.strip('**'))
                     run.bold = True
+                else:
+                    p.add_run(part)
     # Add a page break before the raw text version
     doc.add_page_break()
     

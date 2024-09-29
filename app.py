@@ -1,4 +1,4 @@
-import streamlit as st
+veimport streamlit as st
 from io import BytesIO
 from docx import Document
 from docx.shared import Pt
@@ -12,10 +12,10 @@ client = Groq(api_key=api_key)
 my_llm = "llama-3.2-90b-text-preview"
 
 # Function to generate the lesson plan using AI
-def generate_lesson_plan(topic, subject, grade_level, strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i):
+def generate_lesson_plan(competency, subject, grade_level, strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i):
     prompt = f"""
     Generate a lesson plan based on the following parameters:
-    Competency: {topic}
+    Competency: {competency}
     Subject: {subject}
     Grade Level: {grade_level}
     Strategies: {strategies}
@@ -24,36 +24,37 @@ def generate_lesson_plan(topic, subject, grade_level, strategies, content, past_
     
 	Apply the following structure to generate the lesson plan:
 	
-    A. Reviewing {past_lesson} or presenting the new lesson. Time limit is {part_a}
-		Teacher: Activates prior knowledge based on {past_lesson} or introduces new topic
-		Students: Recall previous learning or engage with new concept introduction
+    	A. Reviewing {past_lesson} or presenting the new lesson. Time limit is {part_a}
+		Activates prior knowledge based on {past_lesson} or introduces new topic.
+		Ask 2 HOTS questions
+		
 
-	B. Establishing a purpose for the lesson. Time limit is {part_b} 
-		Teacher: Presents an engaging activity or question to spark interest
-		Students: Participate in the activity, answering questions to connect with the topic
+	B. Establishing a purpose for the lesson based on {competency}. Time limit is {part_b} 
+		Presents an engaging activity or question to spark interest
+		Ask 2 HOTS questions
 
 	C. Presenting examples/instances of the new lesson. Time limit is {part_c}
-		Teacher: Provides concrete examples or demonstrations of the new concept
-		Students: Observe and begin to interact with the new material
+		Provides concrete examples or demonstrations of the new concept using 21st centutry skills strategies or {strategies}
+		
 
 	D. Discussing new concepts and practicing new skills #1. Time limit is {part_d}
-		Teacher: Explains new concepts and guides initial practice
-		Students: Engage in discussion and attempt to apply new knowledge/skills
+		Explains new concepts and guides initial practice using 21st century skills strategies or {strategies}
+		
 
 	E. Discussing new concepts and practicing new skills #2. Time limit is {part_e}
-		Students: Engage in addtional discussion and attempt to further apply new knowledge/skills
+		Studentss are engage in addtional discussion and attempt to further apply new knowledge/skills using using 21st century skills strategies or {strategies}
 
 	F. Developing mastery. Time limit is {part_f}
-		Teacher: Provides opportunities for more independent practice
-		Students: Practice applying new concepts/skills, demonstrating growing competence
+		Provides opportunities for more independent practice
+		Students will practice applying new concepts/skills, demonstrating growing competence using 21st century skills strategies or {strategies}
 
 	G. Finding practical applications of concepts. Time limit is {part_g}
-		Teacher: Prompts students to consider real-world applications
-		Students: Brainstorm and share ideas on how the learning applies to their lives
+		Prompts students to consider real-world applications
+		The students willbrainstorm and share ideas on how the learning applies to their lives using 21st century skills strategies or {strategies}
 
 	G. Making generalizations and abstractions about the lesson. Time limit is {part_h}
-		Teacher: Facilitates discussion to summarize key points and broader implications
-		Students: Articulate main ideas and how they connect to larger concepts
+		The teacher will facilitates discussion to summarize key points and broader implications
+		The students will articulate main ideas and how they connect to larger concepts
 
 	I. Evaluating learning. Time limit is {part_i}
 		Teacher: Assigns a task to assess understanding and application of learning in a form of a quiz
@@ -168,7 +169,7 @@ def export_to_txt(lesson_plan):
 st.title("4As Lesson Plan Generator with AI")
 
 # User inputs
-topic = st.text_input("1. Topic:", "")
+competency = st.text_input("1. Competency:", "")
 subject = st.text_input("2. Subject:", "")
 grade_level = st.text_input("3. Grade level:", "")
 strategies = st.text_input("4. Teaching strategies:", "")
@@ -186,10 +187,10 @@ part_h = st.text_input("14. Making generalizations and abstractions about the le
 part_i = st.text_input("15. Evaluating learning time limit (minutes):", "10")
 
 if st.button("Generate Lesson Plan"):
-    if topic and subject and grade_level and strategies and content:
+    if competency and subject and grade_level and strategies and content:
         # Generate the lesson plan
         raw_lesson_plan = generate_lesson_plan(
-            topic, subject, grade_level, strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i)
+            competency, subject, grade_level, strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i)
         
         # Format the lesson plan
         formatted_lesson_plan = format_lesson_plan(raw_lesson_plan)

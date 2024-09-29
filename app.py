@@ -134,8 +134,21 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
             # Bullet point with bold text
             if not in_list:
                 in_list = True
-            p = doc.add_paragraph(line.lstrip('- *').strip(), style='List Bullet')
-            p.runs[0].bold = True
+            
+            # Remove leading '- **' and trailing '**' if present
+            text = line.lstrip('- **')
+            if text.endswith('**'):
+                text = text[:-2]
+            
+            # Split the text into bold and non-bold parts
+            parts = text.split(':', 1)
+            
+            p = doc.add_paragraph(style='List Bullet')
+            p.add_run(parts[0]).bold = True
+    
+            if len(parts) > 1:
+                p.add_run(':' + parts[1])
+                
         elif line.startswith('-'):
             # Bullet point
             if not in_list:
@@ -148,9 +161,11 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
             p.add_run(key.strip('** ')).bold = True
             p.add_run(f": {value.strip('** ')}")
             in_list = False
-        elif line.startswith('*') and line.endswith('*'):
-            # Emphasized text
-            doc.add_paragraph(line.strip('*')).italic = True
+        elif line.startswith('**') and line.endswith('**'):
+             # Bullet point
+            if not in_list:
+                in_list = True
+             doc.add_paragraph(line.lstrip('**').strip(), style='List Bullet')
         elif line:
             # Regular paragraph
             if in_list and not line[0].isdigit():

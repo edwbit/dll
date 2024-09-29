@@ -22,43 +22,43 @@ def generate_lesson_plan(competency, subject, grade_level, selected_strategies, 
     Content: {content}
     past_lesson: {past_lesson}
     
-	Apply the following structure and the {language} language to generate the lesson plan using plain and simple words and in human-like tone:
-	
-    	A. Reviewing or Presenting the New Lesson. Time Limit: {part_a} minutes.
-	The teacher will use questioning techniques to connect past lessons with the new topic, encouraging students to recall relevant information.
-	The teacher will also ask two Higher Order Thinking Skills (HOTS) questions
+    Apply the following structure and the {language} language to generate the lesson plan using plain and simple words and in human-like tone:
+    
+    A. Reviewing or Presenting the New Lesson. Time Limit: {part_a} minutes.
+    The teacher will use questioning techniques to connect past lessons with the new topic, encouraging students to recall relevant information.
+    The teacher will also ask two Higher Order Thinking Skills (HOTS) questions
  
-	B. Establishing a Purpose for the Lesson. Time Limit: {part_b} minutes.
-	The teacher will present a thought-provoking question or a relevant real-world scenario that relates to the competency being addressed.
-	The teacher will also ask 2 HOTS Questions
+    B. Establishing a Purpose for the Lesson. Time Limit: {part_b} minutes.
+    The teacher will present a thought-provoking question or a relevant real-world scenario that relates to the competency being addressed.
+    The teacher will also ask 2 HOTS Questions
  
-	C. Presenting Examples/Instances of the New Lesson. Time Limit: {part_c} minutes.
-	The teacher will utilize multimedia resources or real-life demonstrations that incorporate 21st-century skills, such as critical thinking and collaboration.
-	The teacher will use {selected_strategies}
+    C. Presenting Examples/Instances of the New Lesson. Time Limit: {part_c} minutes.
+    The teacher will utilize multimedia resources or real-life demonstrations that incorporate 21st-century skills, such as critical thinking and collaboration.
+    The teacher will use {selected_strategies}
  
-	D. Discussing New Concepts and Practicing New Skills #1. Time Limit: {part_d} minutes.
-	The teacher will explain new concepts clearly, using visual aids and interactive discussions to facilitate understanding.
-	The teacher will use {selected_strategies}
+    D. Discussing New Concepts and Practicing New Skills #1. Time Limit: {part_d} minutes.
+    The teacher will explain new concepts clearly, using visual aids and interactive discussions to facilitate understanding.
+    The teacher will use {selected_strategies}
  
-	E. Discussing New Concepts and Practicing New Skills #2. Time Limit: {part_e} minutes.
-	The teacher will facilitate deeper exploration of the topic through group discussions or debates, allowing students to express their thoughts.
-	The teacher will use {selected_strategies}
+    E. Discussing New Concepts and Practicing New Skills #2. Time Limit: {part_e} minutes.
+    The teacher will facilitate deeper exploration of the topic through group discussions or debates, allowing students to express their thoughts.
+    The teacher will use {selected_strategies}
  
-	F. Developing Mastery. Time Limit: {part_f} minutes.
-	The teacher will povide opportunities for students to apply their knowledge independently through projects or assignments.
-	The teacher will use {selected_strategies}
+    F. Developing Mastery. Time Limit: {part_f} minutes.
+    The teacher will povide opportunities for students to apply their knowledge independently through projects or assignments.
+    The teacher will use {selected_strategies}
  
-	G. Finding Practical Applications of Concepts. Time Limit: {part_g} minutes.
-	The teacher will prompt students to brainstorm how the concepts learned can be applied in their lives or communities.
-	The teacher will use {selected_strategies}
+    G. Finding Practical Applications of Concepts. Time Limit: {part_g} minutes.
+    The teacher will prompt students to brainstorm how the concepts learned can be applied in their lives or communities.
+    The teacher will use {selected_strategies}
  
-	H. Making Generalizations and Abstractions about the Lesson. Time Limit: {part_h} minutes.
-	The teacher will facilitate summarization of key points and encourage students to articulate main ideas and broader implications of the lesson.
-	The teacher will use {selected_strategies}
+    H. Making Generalizations and Abstractions about the Lesson. Time Limit: {part_h} minutes.
+    The teacher will facilitate summarization of key points and encourage students to articulate main ideas and broader implications of the lesson.
+    The teacher will use {selected_strategies}
  
-	I. Evaluating Learning.	Time Limit: {part_i} minutes.
-	The teacher will assign a quiz or project that assesses understanding and application of the lesson content.
-	The teacher will use formative assessments like exit tickets where students reflect on what they learned.
+    I. Evaluating Learning. Time Limit: {part_i} minutes.
+    The teacher will assign a quiz or project that assesses understanding and application of the lesson content.
+    The teacher will use formative assessments like exit tickets where students reflect on what they learned.
     
     Please format the output as follows:
     - Use '**' for bold text, not for bullet points
@@ -68,7 +68,7 @@ def generate_lesson_plan(competency, subject, grade_level, selected_strategies, 
     """
     chat_completion = client.chat.completions.create(
         messages=[{"role": "user", "content": prompt}],
-        model= my_llm
+        model=my_llm
     )
     return chat_completion.choices[0].message.content
 
@@ -106,11 +106,6 @@ def export_to_docx(lesson_plan):
     for line in lines:
         line = line.strip()
         if line.startswith('**') and line.endswith('**'):
-            # # Section header
-            # current_section = line.strip('**')
-            # doc.add_heading(current_section, level=2)
-            # in_list = False
-
             # Section header
             current_section = line.strip('**')
             p = doc.add_paragraph()
@@ -179,10 +174,10 @@ selected_strategies = st.multiselect("Teaching strategies:", strategies)
 content = st.text_input("Content:", "required")
 
 past_lesson = st.text_input("Past lesson:", "required")
-part_a = st.text_input("Reviewing previous lesson or presenting the new lesson time limi(minutes):", "5")
-part_b = st.text_input("Establishing a purpose for the lesson time limi(minutes):", "5")
+part_a = st.text_input("Reviewing previous lesson or presenting the new lesson time limit (minutes):", "5")
+part_b = st.text_input("Establishing a purpose for the lesson time limit (minutes):", "5")
 part_c = st.text_input("Presenting examples/instances of the new lesson time limit (minutes):", "5")
-part_d = st.text_input("Discussing new concepts and practicing new skills #1 time limi(minutes):", "5")
+part_d = st.text_input("Discussing new concepts and practicing new skills #1 time limit (minutes):", "5")
 part_e = st.text_input("Discussing new concepts and practicing new skills #2 time limit (minutes):", "5")
 part_f = st.text_input("Developing mastery time limit (minutes):", "10")
 part_g = st.text_input("Finding practical applications of concepts time limit (minutes):", "10")
@@ -193,7 +188,8 @@ if st.button("Generate Lesson Plan"):
     if language and competency and subject and grade_level and strategies and content and past_lesson:
         # Generate the lesson plan
         raw_lesson_plan = generate_lesson_plan(
-            language, competency, subject, grade_level, selected_strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i)
+            competency, subject, grade_level, selected_strategies, content, past_lesson, 
+            part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i, language)
         
         # Format the lesson plan
         formatted_lesson_plan = format_lesson_plan(raw_lesson_plan)
@@ -201,17 +197,30 @@ if st.button("Generate Lesson Plan"):
         # Display the formatted lesson plan
         st.markdown(formatted_lesson_plan)
 
-        # Export the formatted lesson plan to DOCX
+        # Export the formatted lesson plan to DOCX and TXT
         docx_file = export_to_docx(formatted_lesson_plan)
+        txt_file = export_to_txt(formatted_lesson_plan)
 
-        # Provide download button for the DOCX
-        st.download_button(
-            label="Download as DOCX",
-            data=docx_file,
-            file_name="lesson_plan.docx",
-            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-        )
+        # Create two columns for the download buttons
+        col1, col2 = st.columns(2)
+
+        # Provide download button for the DOCX in the first column
+        with col1:
+            st.download_button(
+                label="Download as DOCX",
+                data=docx_file,
+                file_name="lesson_plan.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            )
+
+        # Provide download button for the TXT in the second column
+        with col2:
+            st.download_button(
+                label="Download as TXT",
+                data=txt_file,
+                file_name="lesson_plan.txt",
+                mime="text/plain"
+            )
 
     else:
         st.warning("Please fill in all fields.")
-                    

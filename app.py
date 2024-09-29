@@ -128,10 +128,7 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
     doc_file.seek(0)
     return doc_file
     
-#streamlit styling
-def styled_label(label):
-    st.markdown(f"<p style='font-weight:bold; font-size:16px; color: #4CAF50;'>{label}</p>", unsafe_allow_html=True)
-    
+   
 # Streamlit app layout
 st.title("📚 DLL Generator with AI")
 st.caption(f"Generated using {my_llm}. Developed by ebb with AI assistance.")
@@ -140,11 +137,10 @@ st.caption(f"Generated using {my_llm}. Developed by ebb with AI assistance.")
 col1, col2 = st.columns(2)
 
 with col1:
-    styled_label("Language")
-    language = st.text_input("english")
+    language = st.text_input(Language:","english")
     competency = st.text_input("Competency:", "required")
-    subject = st.text_input("Subject:", "required")
-    grade_level = st.text_input("Grade Level:", "required")
+    subject = st.text_input("Subject:", "CSS")
+    grade_level = st.text_input("Grade Level:", "11")
 
 with col2:
     strategies = ["Project-Based Learning", "Collaborative Learning", "Real-World Applications", "Technology Integration", "Differentiated Instruction"]

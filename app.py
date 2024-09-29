@@ -12,13 +12,13 @@ client = Groq(api_key=api_key)
 my_llm = "llama-3.2-90b-text-preview"
 
 # Function to generate the lesson plan using AI
-def generate_lesson_plan(competency, subject, grade_level, strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i, language):
+def generate_lesson_plan(competency, subject, grade_level, selected_strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i, language):
     prompt = f"""
     Generate a lesson plan based on the following parameters:
     Competency: {competency}
     Subject: {subject}
     Grade Level: {grade_level}
-    Strategies: {strategies}
+    Strategies: {selected_strategies}
     Content: {content}
 	past_lesson: {past_lesson}
     
@@ -179,7 +179,8 @@ language = st.text_input("Language:", "required")
 competency = st.text_input("Competency:", "required")
 subject = st.text_input("Subject:", "required")
 grade_level = st.text_input("Grade level:", "required")
-strategies = st.text_input("Teaching strategies:", "Project-Based Learning, Collaborative Learning, Real-World Applications, Technology Integration,Differentiated Instruction ")
+strategies = ["Project-Based Learning", "Collaborative Learning", "Real-World Applications", "Technology Integration", "Differentiated Instruction"]
+selected_strategies = st.multiselect("Teaching strategies:", strategies)
 content = st.text_input("Content:", "required")
 
 past_lesson = st.text_input("Past lesson:", "required")
@@ -197,7 +198,7 @@ if st.button("Generate Lesson Plan"):
     if language and competency and subject and grade_level and strategies and content and past_lesson:
         # Generate the lesson plan
         raw_lesson_plan = generate_lesson_plan(
-            language, competency, subject, grade_level, strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i)
+            language, competency, subject, grade_level, selected_strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i)
         
         # Format the lesson plan
         formatted_lesson_plan = format_lesson_plan(raw_lesson_plan)

@@ -98,7 +98,8 @@ def format_lesson_plan(lesson_plan_data):
     return formatted_plan
 
 # Function to export the lesson plan to DOCX
-def export_to_docx(lesson_plan, raw_lesson_plan):
+#def export_to_docx(lesson_plan, raw_lesson_plan):
+def export_to_docx(lesson_plan):
     doc = Document()
     
     # Add title
@@ -161,11 +162,11 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
                 if i % 2 == 1:  # Odd-indexed parts were between ** in the original text
                     run.bold = True
     # Add a page break before the raw text version
-    doc.add_page_break()
+    #doc.add_page_break()
     
     # Add the raw text version
-    doc.add_heading("Raw AI-Generated Version", level=1)
-    doc.add_paragraph(raw_lesson_plan)
+    #doc.add_heading("Raw AI-Generated Version", level=1)
+    #doc.add_paragraph(raw_lesson_plan)
     
     doc_file = BytesIO()
     doc.save(doc_file)
@@ -217,7 +218,7 @@ if st.button("Generate Lesson Plan"):
         st.markdown(formatted_lesson_plan)
 
         # Export the lesson plan to DOCX (including raw version)
-        docx_file = export_to_docx(formatted_lesson_plan, raw_lesson_plan)
+        docx_file = export_to_docx(formatted_lesson_plan)
 
         # Provide download button for the DOCX
         st.download_button(

@@ -153,6 +153,12 @@ def export_to_docx(lesson_plan):
                 run = p.add_run(part.strip())
                 if i % 2 == 1:  # Odd-indexed parts were between ** in the original text
                     run.bold = True
+    # Add a page break before the raw text version
+    doc.add_page_break()
+    
+    # Add the raw text version
+    doc.add_heading("Raw AI-Generated Version", level=1)
+    doc.add_paragraph(raw_lesson_plan)
     
     doc_file = BytesIO()
     doc.save(doc_file)
@@ -203,30 +209,17 @@ if st.button("Generate Lesson Plan"):
         # Display the formatted lesson plan
         st.markdown(formatted_lesson_plan)
 
-        # Export the formatted lesson plan to DOCX and TXT
-        docx_file = export_to_docx(formatted_lesson_plan)
-        txt_file = export_to_txt(formatted_lesson_plan)
+        # Export the lesson plan to DOCX (including raw version)
+        docx_file = export_to_docx(formatted_lesson_plan, raw_lesson_plan)
 
-        # Create two columns for the download buttons
-        col1, col2 = st.columns(2)
+        # Provide download button for the DOCX
+        st.download_button(
+            label="Download Lesson Plan (DOCX with raw AI output)",
+            data=docx_file,
+            file_name="lesson_plan_with_raw.docx",
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        )      
 
-        # Provide download button for the DOCX in the first column
-        with col1:
-            st.download_button(
-                label="Download as DOCX",
-                data=docx_file,
-                file_name="lesson_plan.docx",
-                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-            )
-
-        # Provide download button for the TXT in the second column
-        with col2:
-            st.download_button(
-                label="Download as TXT",
-                data=txt_file,
-                file_name="lesson_plan.txt",
-                mime="text/plain"
-            )
-
+      
     else:
         st.warning("Please fill in all fields.")

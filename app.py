@@ -129,7 +129,7 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
                 in_list = True
             p = doc.add_paragraph(line.lstrip('-**').strip(), style='List Bullet')
             p.runs[0].bold = True
-         elif line.startswith('- **'):
+        elif line.startswith('- **'):
             # Bullet point with bold text
             if not in_list:
                 in_list = True

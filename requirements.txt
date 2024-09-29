@@ -1,0 +1,4 @@
+python-docx
+pdfkit
+groq
+fpdf

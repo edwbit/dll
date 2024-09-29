@@ -165,7 +165,7 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
              # Bullet point
             if not in_list:
                 in_list = True
-             doc.add_paragraph(line.lstrip('**').strip(), style='List Bullet')
+            doc.add_paragraph(line.lstrip('**').strip(), style='List Bullet')
         elif line:
             # Regular paragraph
             if in_list and not line[0].isdigit():

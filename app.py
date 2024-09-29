@@ -24,41 +24,39 @@ def generate_lesson_plan(competency, subject, grade_level, selected_strategies, 
     
 	Apply the following structure and the {language} language to generate the lesson plan using plain and simple words and in human-like tone:
 	
-    	A. Reviewing or Presenting the New Lesson. Time Limit: {part_a}
+    	A. Reviewing or Presenting the New Lesson. Time Limit: {part_a} minutes.
 	The teacher will use questioning techniques to connect past lessons with the new topic, encouraging students to recall relevant information.
 	The teacher will also ask two Higher Order Thinking Skills (HOTS) questions
  
-	B. Establishing a Purpose for the Lesson. Time Limit: {part_b}
+	B. Establishing a Purpose for the Lesson. Time Limit: {part_b} minutes.
 	The teacher will present a thought-provoking question or a relevant real-world scenario that relates to the competency being addressed.
 	The teacher will also ask 2 HOTS Questions
  
-	C. Presenting Examples/Instances of the New Lesson. Time Limit: {part_c}
+	C. Presenting Examples/Instances of the New Lesson. Time Limit: {part_c} minutes.
 	The teacher will utilize multimedia resources or real-life demonstrations that incorporate 21st-century skills, such as critical thinking and collaboration.
 	The teacher will use {selected_strategies}
  
-	D. Discussing New Concepts and Practicing New Skills #1. Time Limit: {part_d}
+	D. Discussing New Concepts and Practicing New Skills #1. Time Limit: {part_d} minutes.
 	The teacher will explain new concepts clearly, using visual aids and interactive discussions to facilitate understanding.
 	The teacher will use {selected_strategies}
  
-	E. Discussing New Concepts and Practicing New Skills #2. Time Limit: {part_e}
+	E. Discussing New Concepts and Practicing New Skills #2. Time Limit: {part_e} minutes.
 	The teacher will facilitate deeper exploration of the topic through group discussions or debates, allowing students to express their thoughts.
 	The teacher will use {selected_strategies}
  
-	F. Developing Mastery. Time Limit: {part_f}
+	F. Developing Mastery. Time Limit: {part_f} minutes.
 	The teacher will povide opportunities for students to apply their knowledge independently through projects or assignments.
 	The teacher will use {selected_strategies}
  
-	G. Finding Practical Applications of Concepts. Time Limit: {part_g}
+	G. Finding Practical Applications of Concepts. Time Limit: {part_g} minutes.
 	The teacher will prompt students to brainstorm how the concepts learned can be applied in their lives or communities.
 	The teacher will use {selected_strategies}
  
-	H. Making Generalizations and Abstractions about the Lesson
-	Time Limit: {part_h}
+	H. Making Generalizations and Abstractions about the Lesson. Time Limit: {part_h} minutes.
 	The teacher will facilitate summarization of key points and encourage students to articulate main ideas and broader implications of the lesson.
 	The teacher will use {selected_strategies}
  
-	I. Evaluating Learning
-	Time Limit: {part_i}
+	I. Evaluating Learning.	Time Limit: {part_i} minutes.
 	The teacher will assign a quiz or project that assesses understanding and application of the lesson content.
 	The teacher will use formative assessments like exit tickets where students reflect on what they learned.
     

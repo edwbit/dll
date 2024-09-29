@@ -170,13 +170,13 @@ st.title(f"Daily Lesson Log Generator with AI")
 st.caption(f"This generator is using {my_llm}.")
 
 # User inputs
-competency = st.text_input("1. Competency:", "")
-subject = st.text_input("2. Subject:", "")
-grade_level = st.text_input("3. Grade level:", "")
-strategies = st.text_input("4. Teaching strategies:", "")
-content = st.text_input("5. Content:", "")
+competency = st.text_input("1. Competency:", "required")
+subject = st.text_input("2. Subject:", "required")
+grade_level = st.text_input("3. Grade level:", "required")
+strategies = st.text_input("4. Teaching strategies:", "required")
+content = st.text_input("5. Content:", "required")
 
-past_lesson = st.text_input("6. Past lesson:")
+past_lesson = st.text_input("6. Past lesson:", "required")
 part_a = st.text_input("7. Reviewing previous lesson or presenting the new lesson time limi(minutes):", "5")
 part_b = st.text_input("8. Establishing a purpose for the lesson time limi(minutes):", "5")
 part_c = st.text_input("9. Presenting examples/instances of the new lesson time limit (minutes):", "5")
@@ -188,7 +188,7 @@ part_h = st.text_input("14. Making generalizations and abstractions about the le
 part_i = st.text_input("15. Evaluating learning time limit (minutes):", "10")
 
 if st.button("Generate Lesson Plan"):
-    if competency and subject and grade_level and strategies and content:
+    if competency and subject and grade_level and strategies and content and past_lesson:
         # Generate the lesson plan
         raw_lesson_plan = generate_lesson_plan(
             competency, subject, grade_level, strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i)

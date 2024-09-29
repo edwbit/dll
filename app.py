@@ -25,31 +25,31 @@ def generate_lesson_plan(competency, subject, grade_level, strategies, content, 
 	Apply the following structure to generate the lesson plan:
 	
     	A. Reviewing {past_lesson} or presenting the new lesson. Time limit is {part_a}
-		Activates prior knowledge based on {past_lesson} or introduces new topic.
+		The teacjer will activates prior knowledge based on {past_lesson} or introduces new topic.
 		Ask 2 HOTS questions
 		
 
 	B. Establishing a purpose for the lesson based on {competency}. Time limit is {part_b} 
-		Presents an engaging activity or question to spark interest
+		The teacher will presents an engaging activity or question to spark interest
 		Ask 2 HOTS questions
 
 	C. Presenting examples/instances of the new lesson. Time limit is {part_c}
-		Provides concrete examples or demonstrations of the new concept using 21st centutry skills strategies or {strategies}
+		The teacher provides concrete examples or demonstrations of the new concept using 21st centutry skills strategies or {strategies}
 		
 
 	D. Discussing new concepts and practicing new skills #1. Time limit is {part_d}
-		Explains new concepts and guides initial practice using 21st century skills strategies or {strategies}
+		The teacher explains new concepts and guides initial practice using 21st century skills strategies or {strategies}
 		
 
 	E. Discussing new concepts and practicing new skills #2. Time limit is {part_e}
 		Studentss are engage in addtional discussion and attempt to further apply new knowledge/skills using using 21st century skills strategies or {strategies}
 
 	F. Developing mastery. Time limit is {part_f}
-		Provides opportunities for more independent practice
+		The teacher provides opportunities for more independent practice
 		Students will practice applying new concepts/skills, demonstrating growing competence using 21st century skills strategies or {strategies}
 
 	G. Finding practical applications of concepts. Time limit is {part_g}
-		Prompts students to consider real-world applications
+		The teacher prompts students to consider real-world applications
 		The students willbrainstorm and share ideas on how the learning applies to their lives using 21st century skills strategies or {strategies}
 
 	G. Making generalizations and abstractions about the lesson. Time limit is {part_h}
@@ -57,8 +57,8 @@ def generate_lesson_plan(competency, subject, grade_level, strategies, content, 
 		The students will articulate main ideas and how they connect to larger concepts
 
 	I. Evaluating learning. Time limit is {part_i}
-		Teacher: Assigns a task to assess understanding and application of learning in a form of a quiz
-		Students: Complete the assigned task, demonstrating their grasp of the lesson content
+		The teacher will assign a task to assess understanding and application of learning in a form of a quiz
+		The students will complete the assigned task, demonstrating their grasp of the lesson content
     
     Please format the output as follows:
     - Use '**' for bold text, not for bullet points

@@ -74,12 +74,12 @@ def generate_lesson_plan(competency, subject, grade_level, selected_strategies, 
 
 # Function to format the generated lesson plan
 def format_lesson_plan(lesson_plan_data):
-    formatted_plan = "4As Lesson Plan\n\n"
+    formatted_plan = "Daily Lesson Log\n\n"
     sections = lesson_plan_data.split('\n\n')
 
     for section in sections:
         lines = section.split('\n')
-        if lines[0].strip().lower() in ['activity', 'analysis', 'abstraction', 'application', 'assessment']:
+        if lines[0].strip().lower() in ['Reviewing or Presenting the New Lesson', 'analysis', 'abstraction', 'application', 'assessment']:
             formatted_plan += f"**{lines[0].strip()}**\n\n"
             formatted_plan += '\n'.join(lines[1:]).strip() + '\n\n'
         else:

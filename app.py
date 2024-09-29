@@ -120,7 +120,7 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
             font.bold = True
             font.size = Pt(12)
             in_list = False
-            doc.add_paragraph()  # Add a line break
+            #doc.add_paragraph()  # Add a line break
             
         elif line.startswith('-**'):
             # Bullet point with bold text

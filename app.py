@@ -25,13 +25,13 @@ def generate_lesson_plan(competency, subject, grade_level, strategies, content, 
 	Apply the following structure to generate the lesson plan:
 	
     	A. Reviewing {past_lesson} or presenting the new lesson. Time limit is {part_a}
-		The teacjer will activates prior knowledge based on {past_lesson} or introduces new topic.
-		Ask 2 HOTS questions
+		The teacher will activates prior knowledge based on {past_lesson} or introduces new topic.
+		The teacher will also ask 2 HOTS questions.
 		
 
 	B. Establishing a purpose for the lesson based on {competency}. Time limit is {part_b} 
 		The teacher will presents an engaging activity or question to spark interest
-		Ask 2 HOTS questions
+		The teacher will also ask 2 HOTS questions.
 
 	C. Presenting examples/instances of the new lesson. Time limit is {part_c}
 		The teacher provides concrete examples or demonstrations of the new concept using 21st centutry skills strategies or {strategies}

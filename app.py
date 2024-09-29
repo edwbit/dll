@@ -134,14 +134,11 @@ st.markdown("""
 .stTextInput > label {
     color: #e516a4d6; /* Change label color */
 }
+.stMultiSelect > label {
+    color: #e516a4d6; /* Change label color */
+}    
 </style>
 """, unsafe_allow_html=True)
-
-st.markdown("""
-    <p style='font-weight: bold; font-size: 18px;'>
-        Grade Level:
-    </p>
-    """, unsafe_allow_html=True)
 
    
 # Streamlit app layout

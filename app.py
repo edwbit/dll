@@ -149,33 +149,34 @@ st.caption(f"Generated using {my_llm}. Developed by ebb with AI assistance.")
 col1, col2 = st.columns(2)
 
 with col1:
+    # we use markdown (**)here to make the label bold
     language = st.text_input("**Language**:","english")
-    competency = st.text_input("Competency:", "required")
-    subject = st.text_input("Subject:", "CSS")
-    grade_level = st.text_input("Grade Level:", "11")
+    competency = st.text_input("**Competency:**", "required")
+    subject = st.text_input("**Subject:**", "CSS")
+    grade_level = st.text_input("**Grade Level:**", "11")
 
 with col2:
     strategies = ["Project-Based Learning", "Collaborative Learning", "Real-World Applications", "Technology Integration", "Differentiated Instruction"]
-    selected_strategies = st.multiselect("Teaching Strategies:", strategies)
-    content = st.text_input("Content:", "required")
-    past_lesson = st.text_input("Past Lesson:", "required")
+    selected_strategies = st.multiselect("**Teaching Strategies:**", strategies)
+    content = st.text_input("**Content:**", "required")
+    past_lesson = st.text_input("**Past Lesson:**", "required")
 
 st.markdown("---")  # Horizontal divider for clarity
 
 # Two-column layout for time limits
 col1, col2 = st.columns(2)
 with col1:
-    part_a = st.text_input("A. Reviewing or Presenting the New Lesson (minutes):", "10")
-    part_c = st.text_input("C. Presenting Examples of the New Lesson (minutes):", "10")
-    part_e = st.text_input("E. Discussing New Skills #2 (minutes):", "10")
-    part_g = st.text_input("G. Finding Practical Applications (minutes):", "20")
-    part_i = st.text_input("I. Evaluating Learning (minutes):", "20")
+    part_a = st.text_input("**A. Reviewing or Presenting the New Lesson (minutes):**", "10")
+    part_c = st.text_input("**C. Presenting Examples of the New Lesson (minutes):**", "10")
+    part_e = st.text_input("**E. Discussing New Skills #2 (minutes):**", "10")
+    part_g = st.text_input("**G. Finding Practical Applications (minutes):**", "20")
+    part_i = st.text_input("**I. Evaluating Learning (minutes):**", "20")
 
 with col2:
-    part_b = st.text_input("B. Establishing a Purpose (minutes):", "10")
-    part_d = st.text_input("D. Discussing New Skills #1 (minutes):", "10")
-    part_f = st.text_input("F. Developing Mastery (minutes):", "20")
-    part_h = st.text_input("H. Making Generalizations (minutes):", "10")
+    part_b = st.text_input("**B. Establishing a Purpose (minutes):**", "10")
+    part_d = st.text_input("**D. Discussing New Skills #1 (minutes):**", "10")
+    part_f = st.text_input("**F. Developing Mastery (minutes):**", "20")
+    part_h = st.text_input("**H. Making Generalizations (minutes)**:", "10")
 
 if st.button("Generate Lesson Plan"):
     if language and competency and subject and grade_level and selected_strategies and content and past_lesson:

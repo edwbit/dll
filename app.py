@@ -200,7 +200,8 @@ def export_to_txt(lesson_plan):
 
 # Streamlit app layout
 st.title(f"Daily Lesson Log Generator with AI")
-st.caption(f"This generator is using {my_llm}.")
+st.caption(f"This generator is using {my_llm}. Developed by ebb with AI Asssitance")
+
 
 # User inputs
 language = st.text_input("Language:", "required")

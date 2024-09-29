@@ -79,11 +79,16 @@ def format_lesson_plan(lesson_plan_data):
 
     for section in sections:
         lines = section.split('\n')
-        if lines[0].strip().lower() in ['Reviewing or Presenting the New Lesson', 'analysis', 'abstraction', 'application', 'assessment']:
+        if lines[0].strip().startswith(('A.', 'B.', 'C.', 'D.', 'E.', 'F.', 'G.', 'H.', 'I.')):
             formatted_plan += f"**{lines[0].strip()}**\n\n"
             formatted_plan += '\n'.join(lines[1:]).strip() + '\n\n'
         else:
             formatted_plan += section.strip() + '\n\n'
+
+    # Remove extra asterisks from key-value pairs
+    formatted_plan = '\n'.join([line.replace('**: **', ': ') if ': ' in line else line for line in formatted_plan.split('\n')])
+
+    return formatted_plan
 
     # Remove extra asterisks from key-value pairs
     formatted_plan = '\n'.join([line.replace('**: **', ': ') if ': ' in line else line for line in formatted_plan.split('\n')])

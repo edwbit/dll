@@ -4,6 +4,7 @@ from io import BytesIO
 from docx import Document
 from docx.shared import Pt, Inches
 from docx.enum.style import WD_STYLE_TYPE
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from groq import Groq
 
 # Load the API key from Streamlit secrets
@@ -102,15 +103,6 @@ def format_lesson_plan(lesson_plan_data):
 def export_to_docx(lesson_plan, raw_lesson_plan):
     doc = Document()
     
-    # Create list styles if they don't exist
-    for i in range(1, 10):  # Create styles for up to 9 levels of indentation
-        style_name = f'List Bullet {i}'
-        if style_name not in doc.styles:
-            style = doc.styles.add_style(style_name, WD_STYLE_TYPE.PARAGRAPH)
-            style.base_style = doc.styles['Normal']
-            style.paragraph_format.left_indent = Inches(0.25 * (i-1))
-            style.paragraph_format.first_line_indent = Inches(-0.25)
-    
     # Add title
     title = lesson_plan.split('\n')[0].strip()
     doc.add_heading(title, level=1)
@@ -118,7 +110,6 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
     # Process the rest of the content
     lines = lesson_plan.split('\n')[1:]
     current_section = None
-    in_list = False
     
     def get_indentation_level(line):
         return len(line) - len(line.lstrip())
@@ -135,16 +126,15 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
             font = run.font
             font.bold = True
             font.size = Pt(12)
-            in_list = False
         
         elif line.startswith('-'):
             # Bullet point
             level = min(indent // 2, 9)  # Limit to 9 levels
-            p = doc.add_paragraph(line.lstrip('-').strip(), style=f'List Bullet {level + 1}')
+            p = doc.add_paragraph(line.lstrip('-').strip(), style='List Bullet')
+            p.paragraph_format.left_indent = Inches(level * 0.25)
             if line.startswith('-**'):
                 # Bullet point with bold text
                 p.runs[0].bold = True
-            in_list = True
         
         elif ':' in line:
             # Key-value pair
@@ -153,14 +143,12 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
             p.paragraph_format.left_indent = Inches(indent / 8)  # Adjust as needed
             p.add_run(key.strip('** ')).bold = True
             p.add_run(f": {value.strip('** ')}")
-            in_list = False
         
         elif line.startswith('*') and line.endswith('*'):
             # Emphasized text
             p = doc.add_paragraph(line.strip('*'))
             p.paragraph_format.left_indent = Inches(indent / 8)  # Adjust as needed
             p.runs[0].italic = True
-            in_list = False
         
         elif line:
             # Regular paragraph
@@ -171,7 +159,6 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
                 run = p.add_run(part.strip())
                 if i % 2 == 1:  # Odd-indexed parts were between ** in the original text
                     run.bold = True
-            in_list = False
 
     # Add a page break before the raw text version
     doc.add_page_break()

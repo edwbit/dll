@@ -129,18 +129,25 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
     return doc_file
 
 # Streamlit app layout
-st.title("Daily Lesson Log Generator with AI")
-st.caption(f"This generator is using {my_llm}. Developed by ebb with AI Assistance")
+st.title("📚 DLL Generator with AI")
+st.caption(f"Generated using {my_llm}. Developed by ebb with AI assistance.")
 
-# User inputs
-language = st.text_input("Language:", "required")
-competency = st.text_input("Competency:", "required")
-subject = st.text_input("Subject:", "required")
-grade_level = st.text_input("Grade level:", "required")
-strategies = ["Project-Based Learning", "Collaborative Learning", "Real-World Applications", "Technology Integration", "Differentiated Instruction"]
-selected_strategies = st.multiselect("Teaching strategies:", strategies)
-content = st.text_input("Content:", "required")
-past_lesson = st.text_input("Past lesson:", "required")
+# Organizing input sections into two columns
+col1, col2 = st.columns(2)
+
+with col1:
+    language = st.text_input("Language:", "required")
+    competency = st.text_input("Competency:", "required")
+    subject = st.text_input("Subject:", "required")
+    grade_level = st.text_input("Grade Level:", "required")
+
+with col2:
+    strategies = ["Project-Based Learning", "Collaborative Learning", "Real-World Applications", "Technology Integration", "Differentiated Instruction"]
+    selected_strategies = st.multiselect("Teaching Strategies:", strategies)
+    content = st.text_input("Content:", "required")
+    past_lesson = st.text_input("Past Lesson:", "required")
+
+st.markdown("---")  # Horizontal divider for clarity
 
 # Two-column layout for time limits
 col1, col2 = st.columns(2)

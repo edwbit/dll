@@ -130,7 +130,7 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
     
 #streamlit styling
 def styled_label(label):
-    st.markdown(f'<div class="input-label">{label}</div>', unsafe_allow_html=True)
+    st.markdown(f"<p style='font-weight:bold; font-size:16px; color: #4CAF50;'>{label}</p>", unsafe_allow_html=True)
     
 # Streamlit app layout
 st.title("📚 DLL Generator with AI")

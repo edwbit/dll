@@ -186,7 +186,7 @@ part_h = st.text_input("14. Making generalizations and abstractions about the le
 part_i = st.text_input("15. Evaluating learning time limit (minutes):", "10")
 
 if st.button("Generate Lesson Plan"):
-    if topic and subject and grade_level and strategies and content and activity_time and analysis_time and abstraction_time and application_time:
+    if topic and subject and grade_level and strategies and content:
         # Generate the lesson plan
         raw_lesson_plan = generate_lesson_plan(
             topic, subject, grade_level, strategies, content,

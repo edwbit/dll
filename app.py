@@ -23,7 +23,8 @@ def generate_lesson_plan(competency, subject, grade_level, selected_strategies, 
     past_lesson: {past_lesson}
     
     Apply the following structure and the {language} language to generate the lesson plan using plain and simple words and in human-like tone:
-    
+    Be sure to use heading and bulleted list always.
+
     A. Reviewing or Presenting the New Lesson. Time Limit: {part_a} minutes.
     The teacher will use questioning techniques to connect past lessons with the new topic, encouraging students to recall relevant information.
     The teacher will also ask two Higher Order Thinking Skills (HOTS) questions

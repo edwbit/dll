@@ -166,7 +166,7 @@ def export_to_txt(lesson_plan):
     return txt_file
 
 # Streamlit app layout
-st.title(f"4As Lesson Plan Generator using {my_LLM}")
+st.title(f"4As Lesson Plan Generator using {my_llm}")
 
 # User inputs
 competency = st.text_input("1. Competency:", "")

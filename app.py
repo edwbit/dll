@@ -4,6 +4,7 @@ from io import BytesIO
 from docx import Document
 from docx.shared import Pt
 from groq import Groq
+import re
 
 # Load the API key from Streamlit secrets
 api_key = st.secrets["GROQ_API_KEY"]

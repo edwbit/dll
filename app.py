@@ -12,7 +12,7 @@ client = Groq(api_key=api_key)
 my_llm = "llama-3.2-90b-text-preview"
 
 # Function to generate the lesson plan using AI
-def generate_lesson_plan(competency, subject, grade_level, strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i):
+def generate_lesson_plan(competency, subject, grade_level, strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i, language):
     prompt = f"""
     Generate a lesson plan based on the following parameters:
     Competency: {competency}
@@ -22,7 +22,7 @@ def generate_lesson_plan(competency, subject, grade_level, strategies, content, 
     Content: {content}
 	past_lesson: {past_lesson}
     
-	Apply the following structure to generate the lesson plan:
+	Apply the following structure and the {language} language to generate the lesson plan:
 	
     	A. Reviewing {past_lesson} or presenting the new lesson. Time limit is {part_a}
 		The teacher will activates prior knowledge based on {past_lesson} or introduces new topic.
@@ -170,25 +170,26 @@ st.title(f"Daily Lesson Log Generator with AI")
 st.caption(f"This generator is using {my_llm}.")
 
 # User inputs
-competency = st.text_input("1. Competency:", "required")
-subject = st.text_input("2. Subject:", "required")
-grade_level = st.text_input("3. Grade level:", "required")
-strategies = st.text_input("4. Teaching strategies:", "required")
-content = st.text_input("5. Content:", "required")
+language = st.text_input("Language:", "required")
+competency = st.text_input("Competency:", "required")
+subject = st.text_input("Subject:", "required")
+grade_level = st.text_input("Grade level:", "required")
+strategies = st.text_input("Teaching strategies:", "required")
+content = st.text_input("Content:", "required")
 
-past_lesson = st.text_input("6. Past lesson:", "required")
-part_a = st.text_input("7. Reviewing previous lesson or presenting the new lesson time limi(minutes):", "5")
-part_b = st.text_input("8. Establishing a purpose for the lesson time limi(minutes):", "5")
-part_c = st.text_input("9. Presenting examples/instances of the new lesson time limit (minutes):", "5")
-part_d = st.text_input("10. Discussing new concepts and practicing new skills #1 time limi(minutes):", "5")
-part_e = st.text_input("11. Discussing new concepts and practicing new skills #2 time limit (minutes):", "5")
-part_f = st.text_input("12. Developing mastery time limit (minutes):", "10")
-part_g = st.text_input("13. Finding practical applications of concepts time limit (minutes):", "10")
-part_h = st.text_input("14. Making generalizations and abstractions about the lesson time limit (minutes):", "5")
-part_i = st.text_input("15. Evaluating learning time limit (minutes):", "10")
+past_lesson = st.text_input("Past lesson:", "required")
+part_a = st.text_input("Reviewing previous lesson or presenting the new lesson time limi(minutes):", "5")
+part_b = st.text_input("Establishing a purpose for the lesson time limi(minutes):", "5")
+part_c = st.text_input("Presenting examples/instances of the new lesson time limit (minutes):", "5")
+part_d = st.text_input("Discussing new concepts and practicing new skills #1 time limi(minutes):", "5")
+part_e = st.text_input("Discussing new concepts and practicing new skills #2 time limit (minutes):", "5")
+part_f = st.text_input("Developing mastery time limit (minutes):", "10")
+part_g = st.text_input("Finding practical applications of concepts time limit (minutes):", "10")
+part_h = st.text_input("Making generalizations and abstractions about the lesson time limit (minutes):", "5")
+part_i = st.text_input("Evaluating learning time limit (minutes):", "10")
 
 if st.button("Generate Lesson Plan"):
-    if competency and subject and grade_level and strategies and content and past_lesson:
+    if language, competency and subject and grade_level and strategies and content and past_lesson:
         # Generate the lesson plan
         raw_lesson_plan = generate_lesson_plan(
             competency, subject, grade_level, strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i)

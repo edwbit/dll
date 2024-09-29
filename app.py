@@ -50,7 +50,7 @@ def generate_lesson_plan(competency, subject, grade_level, strategies, content, 
 
 	G. Finding practical applications of concepts. Time limit is {part_g}
 		The teacher prompts students to consider real-world applications
-		The students willbrainstorm and share ideas on how the learning applies to their lives using 21st century skills strategies or {strategies}
+		The students will brainstorm and share ideas on how the learning applies to their lives using 21st century skills strategies or {strategies}
 
 	G. Making generalizations and abstractions about the lesson. Time limit is {part_h}
 		The teacher will facilitates discussion to summarize key points and broader implications
@@ -166,7 +166,7 @@ def export_to_txt(lesson_plan):
     return txt_file
 
 # Streamlit app layout
-st.title("4As Lesson Plan Generator with AI")
+st.title(f"4As Lesson Plan Generator using {my_LLM}")
 
 # User inputs
 competency = st.text_input("1. Competency:", "")

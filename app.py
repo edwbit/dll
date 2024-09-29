@@ -110,7 +110,10 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
             p = doc.add_paragraph(line.lstrip('-**').strip(), style='List Bullet')
             p.runs[0].bold = True
         elif line.startswith('-'):
-            doc.add_paragraph(line.lstrip('-').strip(), style='List Bullet')
+            # Strip leading dashes and whitespace
+            bullet_text = line.lstrip('-').strip()
+            if bullet_text:  # Only add if there's actual text
+               doc.add_paragraph(bullet_text, style='List Bullet')
         elif ':' in line:
             key, value = line.split(':', 1)
             p = doc.add_paragraph()

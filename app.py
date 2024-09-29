@@ -2,9 +2,7 @@
 import streamlit as st
 from io import BytesIO
 from docx import Document
-from docx.shared import Pt, Inches
-from docx.enum.style import WD_STYLE_TYPE
-from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+from docx.shared import Pt
 from groq import Groq
 
 # Load the API key from Streamlit secrets
@@ -110,14 +108,10 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
     # Process the rest of the content
     lines = lesson_plan.split('\n')[1:]
     current_section = None
+    in_list = False
     
-    def get_indentation_level(line):
-        return len(line) - len(line.lstrip())
-
-    for original_line in lines:
-        indent = get_indentation_level(original_line)
-        line = original_line.strip()
-        
+    for line in lines:
+        line = line.strip()
         if line.startswith('**') and line.endswith('**'):
             # Section header
             current_section = line.strip('**')
@@ -126,51 +120,46 @@ def export_to_docx(lesson_plan, raw_lesson_plan):
             font = run.font
             font.bold = True
             font.size = Pt(12)
-        
+            in_list = False
+            #doc.add_paragraph()  # Add a line break
+            
+        elif line.startswith('-**'):
+            # Bullet point with bold text
+            if not in_list:
+                in_list = True
+            p = doc.add_paragraph(line.lstrip('-**').strip(), style='List Bullet')
+            p.runs[0].bold = True
         elif line.startswith('-'):
             # Bullet point
-            level = min(indent // 2, 9)  # Limit to 9 levels
-            p = doc.add_paragraph(line.lstrip('-').strip(), style='List Bullet')
-            p.paragraph_format.left_indent = Inches(level * 0.25)
-            if line.startswith('-**'):
-                # Bullet point with bold text
-                p.runs[0].bold = True
-        
+            if not in_list:
+                in_list = True
+            doc.add_paragraph(line.lstrip('-').strip(), style='List Bullet')
         elif ':' in line:
             # Key-value pair
             key, value = line.split(':', 1)
             p = doc.add_paragraph()
-            p.paragraph_format.left_indent = Inches(indent / 8)  # Adjust as needed
             p.add_run(key.strip('** ')).bold = True
             p.add_run(f": {value.strip('** ')}")
-        
+            in_list = False
         elif line.startswith('*') and line.endswith('*'):
             # Emphasized text
-            p = doc.add_paragraph(line.strip('*'))
-            p.paragraph_format.left_indent = Inches(indent / 8)  # Adjust as needed
-            p.runs[0].italic = True
-        
+            doc.add_paragraph(line.strip('*')).italic = True
         elif line:
             # Regular paragraph
+            if in_list and not line[0].isdigit():
+                in_list = False
             p = doc.add_paragraph()
-            p.paragraph_format.left_indent = Inches(indent / 8)  # Adjust as needed
             parts = line.split('**')
             for i, part in enumerate(parts):
                 run = p.add_run(part.strip())
                 if i % 2 == 1:  # Odd-indexed parts were between ** in the original text
                     run.bold = True
-
     # Add a page break before the raw text version
     doc.add_page_break()
     
     # Add the raw text version
     doc.add_heading("Raw AI-Generated Version", level=1)
-    
-    # Preserve indentation in raw text
-    for line in raw_lesson_plan.split('\n'):
-        indent = get_indentation_level(line)
-        p = doc.add_paragraph(line.rstrip())
-        p.paragraph_format.left_indent = Inches(indent / 8)  # Adjust as needed
+    doc.add_paragraph(raw_lesson_plan)
     
     doc_file = BytesIO()
     doc.save(doc_file)

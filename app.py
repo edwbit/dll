@@ -192,7 +192,7 @@ if st.button("Generate Lesson Plan"):
     if language and competency and subject and grade_level and strategies and content and past_lesson:
         # Generate the lesson plan
         raw_lesson_plan = generate_lesson_plan(
-            competency, subject, grade_level, strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i)
+            langauge, competency, subject, grade_level, strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i)
         
         # Format the lesson plan
         formatted_lesson_plan = format_lesson_plan(raw_lesson_plan)

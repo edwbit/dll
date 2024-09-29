@@ -166,8 +166,8 @@ def export_to_txt(lesson_plan):
     return txt_file
 
 # Streamlit app layout
-st.title(f"4As Lesson Plan Generator using AI")
-st.caption(f"The LLM that Edwin Bitco used is {my_llm}.")
+st.title(f"Daily Lesson Log Generator with AI")
+st.caption(f"This generator is using {my_llm}.")
 
 # User inputs
 competency = st.text_input("1. Competency:", "")

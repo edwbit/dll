@@ -29,35 +29,44 @@ def generate_lesson_plan(competency, subject, grade_level, selected_strategies, 
 
     A. Reviewing or Presenting the New Lesson. Time Limit: {part_a} minutes.
     The teacher will ask 2 HOTS questions to connect past lessons with the new topic, encouraging students to recall relevant information.
-    At least 2 questions. 
+    At least 2 questions.
+    Show the procedure of doing the task in brief anc concise manner.
     
     B. Establishing a Purpose for the Lesson. Time Limit: {part_b} minutes.
     The teacher will ask 2 HOTS questions or relevant real-world scenarios that relates to the competency being addressed.
+    Show the procedure of doing the task in brief anc concise manner.
     
     C. Presenting Examples/Instances of the New Lesson. Time Limit: {part_c} minutes.
     The teacher will utilize multimedia resources or real-life demonstrations that incorporate 21st-century skills, such as critical thinking and collaboration.
     The teacher will use appropriate strategy: {selected_strategies}.
+    Show the procedure of doing the task in brief anc concise manner.
 
     D. Discussing New Concepts and Practicing New Skills #1. Time Limit: {part_d} minutes.
     The teacher will explain new concepts clearly, using vappropriate strategy: {selected_strategies} to facilitate understanding.
+    Show the procedure of doing the task in brief anc concise manner.
     
     E. Discussing New Concepts and Practicing New Skills #2. Time Limit: {part_e} minutes.
     The teacher will facilitate deeper exploration of the topic through the use of appropriate strategy: {selected_strategies}. allowing students to express their thoughts.
+    Show the procedure of doing the task in brief anc concise manner.
     
     F. Developing Mastery. Time Limit: {part_f} minutes.
     The teacher will povide opportunities for students to apply their knowledge independently through the use of appropriate strategy: {selected_strategies}.
+    Show the procedure of doing the task in brief anc concise manner.
  
     G. Finding Practical Applications of Concepts. Time Limit: {part_g} minutes.
     The teacher will prompt students to brainstorm how the concepts learned can be applied in their lives or communities.
+    Show the procedure of doing the task in brief anc concise manner.
     
 
     H. Making Generalizations and Abstractions about the Lesson. Time Limit: {part_h} minutes.
     The teacher will facilitate summarization of key points and encourage students to articulate main ideas and broader implications of the lesson.
-    The teacher will use appropriate strategy: {selected_strategies}..
+    The teacher will use appropriate strategy: {selected_strategies}.
+    Show the procedure of doing the task in brief anc concise manner.
 
     I. Evaluating Learning. Time Limit: {part_i} minutes.
     The teacher will assign a quiz or project that assesses understanding and application of the lesson content.
     The teacher will use formative assessments like exit tickets where students reflect on what they learned.
+    Show the procedure of doing the task in brief anc concise manner.
 
     Please format the output as follows:
     - Use '**' for bold text, not for bullet points

@@ -23,37 +23,33 @@ def generate_lesson_plan(competency, subject, grade_level, selected_strategies, 
     past_lesson: {past_lesson}
 
     Apply the following structure and the {language} language to generate the lesson plan using plain and simple words and in human-like tone:
-    Be sure to use heading and bulleted list always.
+    Be sure to use level 2 heading and bulleted list always.
 
     Integration: Enumerate English, Math and Science integration to the subject if any.
 
     A. Reviewing or Presenting the New Lesson. Time Limit: {part_a} minutes.
-    The teacher will use HOTS questioning techniques to connect past lessons with the new topic, encouraging students to recall relevant information.
+    The teacher will ask 2 HOTS questions to connect past lessons with the new topic, encouraging students to recall relevant information.
     At least 2 questions. 
     
     B. Establishing a Purpose for the Lesson. Time Limit: {part_b} minutes.
-    The teacher will present a thought-provoking question or a relevant real-world scenario that relates to the competency being addressed.
-    At least 2 questions. 
-
+    The teacher will ask 2 HOTS questions or relevant real-world scenarios that relates to the competency being addressed.
+    
     C. Presenting Examples/Instances of the New Lesson. Time Limit: {part_c} minutes.
     The teacher will utilize multimedia resources or real-life demonstrations that incorporate 21st-century skills, such as critical thinking and collaboration.
     The teacher will use appropriate strategy: {selected_strategies}.
 
     D. Discussing New Concepts and Practicing New Skills #1. Time Limit: {part_d} minutes.
-    The teacher will explain new concepts clearly, using visual aids and interactive discussions to facilitate understanding.
-    The teacher will use appropriate strategy: {selected_strategies}.
-
+    The teacher will explain new concepts clearly, using vappropriate strategy: {selected_strategies} to facilitate understanding.
+    
     E. Discussing New Concepts and Practicing New Skills #2. Time Limit: {part_e} minutes.
-    The teacher will facilitate deeper exploration of the topic through group discussions or debates, allowing students to express their thoughts.
-    The teacher will use appropriate strategy: {selected_strategies}.
-
+    The teacher will facilitate deeper exploration of the topic through the use of appropriate strategy: {selected_strategies}. allowing students to express their thoughts.
+    
     F. Developing Mastery. Time Limit: {part_f} minutes.
-    The teacher will povide opportunities for students to apply their knowledge independently through projects or assignments.
-    The teacher will use appropriate strategy: {selected_strategies}.
-
+    The teacher will povide opportunities for students to apply their knowledge independently through the use of appropriate strategy: {selected_strategies}.
+ 
     G. Finding Practical Applications of Concepts. Time Limit: {part_g} minutes.
     The teacher will prompt students to brainstorm how the concepts learned can be applied in their lives or communities.
-    The teacher will use appropriate strategy: {selected_strategies}.
+    
 
     H. Making Generalizations and Abstractions about the Lesson. Time Limit: {part_h} minutes.
     The teacher will facilitate summarization of key points and encourage students to articulate main ideas and broader implications of the lesson.

@@ -192,6 +192,29 @@ if st.button("Generate Lesson Plan"):
         formatted_lesson_plan = format_lesson_plan(raw_lesson_plan)
 
         st.markdown(formatted_lesson_plan)
+        # Add JavaScript for clipboard functionality
+        st.markdown("""
+        <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Copied to clipboard!');
+            }, function(err) {
+                alert('Could not copy text: ', err);
+            });
+        }
+        </script>
+        """, unsafe_allow_html=True)
+
+        # Create a button that calls the JavaScript function
+        st.markdown(
+            f"""
+            <button onclick="copyToClipboard(`{formatted_lesson_plan.replace('`', '\\`').replace('$', '\\$')}`)">
+                Copy to Clipboard
+            </button>
+            """,
+            unsafe_allow_html=True
+        )
+
 
         docx_file = export_to_docx(formatted_lesson_plan, raw_lesson_plan)
 

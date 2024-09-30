@@ -1,6 +1,7 @@
 import streamlit as st
 from io import BytesIO
 from docx import Document
+from docx.shared import Pt
 from groq import Groq
 import re
 
@@ -144,20 +145,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Function to inject copy button and JS for clipboard
-def add_copy_button(text):
-    st.markdown(f"""
-    <button class="copy-btn" onclick="copyToClipboard()">📋 Copy</button>
-    <textarea id="lesson-text" style="opacity: 0; height: 0;">{text}</textarea>
-    <script>
-        function copyToClipboard() {{
-            var copyText = document.getElementById("lesson-text");
-            copyText.select();
-            document.execCommand("copy");
-        }}
-    </script>
-    """, unsafe_allow_html=True)
-
+   
 # Streamlit app layout
 st.title("📚 DLL Generator with AI")
 st.caption(f"Generated using {my_llm}. Developed by ebb with AI assistance.")
@@ -166,7 +154,7 @@ st.caption(f"Generated using {my_llm}. Developed by ebb with AI assistance.")
 col1, col2 = st.columns(2)
 
 with col1:
-    # we use markdown (**) here to make the label bold
+    # we use markdown (**)here to make the label bold
     language = st.text_input("**Language**:","english")
     competency = st.text_input("**Competency:**", "required")
     subject = st.text_input("**Subject:**", "CSS")
@@ -186,29 +174,33 @@ with col1:
     part_a = st.text_input("**A. Reviewing or Presenting the New Lesson (minutes):**", "10")
     part_c = st.text_input("**C. Presenting Examples of the New Lesson (minutes):**", "10")
     part_e = st.text_input("**E. Discussing New Skills #2 (minutes):**", "10")
-    part_g = st.text_input("**G. Finding Practical Applications (minutes):**", "10")
-    part_i = st.text_input("**I. Evaluating Learning (minutes):**", "10")
+    part_g = st.text_input("**G. Finding Practical Applications (minutes):**", "20")
+    part_i = st.text_input("**I. Evaluating Learning (minutes):**", "20")
 
 with col2:
     part_b = st.text_input("**B. Establishing a Purpose (minutes):**", "10")
     part_d = st.text_input("**D. Discussing New Skills #1 (minutes):**", "10")
-    part_f = st.text_input("**F. Developing Mastery (minutes):**", "10")
-    part_h = st.text_input("**H. Making Generalizations (minutes):**", "10")
+    part_f = st.text_input("**F. Developing Mastery (minutes):**", "20")
+    part_h = st.text_input("**H. Making Generalizations (minutes)**:", "10")
 
-# Generate the lesson plan when the button is clicked
 if st.button("Generate Lesson Plan"):
-    with st.spinner("Generating lesson plan..."):
-        lesson_plan = generate_lesson_plan(competency, subject, grade_level, selected_strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i, language)
-        formatted_plan = format_lesson_plan(lesson_plan)
-        st.subheader("Formatted Lesson Plan")
-        st.markdown(formatted_plan)
-        add_copy_button(formatted_plan)
+    if language and competency and subject and grade_level and selected_strategies and content and past_lesson:
+        raw_lesson_plan = generate_lesson_plan(
+            competency, subject, grade_level, selected_strategies, content, past_lesson, 
+            part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i, language)
+        
+        formatted_lesson_plan = format_lesson_plan(raw_lesson_plan)
 
-        # Export to DOCX
-        doc_file = export_to_docx(formatted_plan, lesson_plan)
+        st.markdown(formatted_lesson_plan)
+
+        docx_file = export_to_docx(formatted_lesson_plan, raw_lesson_plan)
+
         st.download_button(
-            label="Download as DOCX",
-            data=doc_file,
-            file_name="lesson_plan.docx",
-            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-        )
+                label="Download Lesson Plan (DOCX with Raw AI Output)",
+                data=docx_file,
+                file_name="lesson_plan.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            )
+            
+    else:
+        st.error("Please fill in all required fields!")

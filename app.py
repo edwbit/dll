@@ -30,7 +30,8 @@ def generate_lesson_plan(competency, subject, grade_level, selected_strategies, 
     Use the dollowing format:
 
     Header 3: A. Reviewing or Presenting the New Lesson. Time Limit: {part_a} minutes.
-    1. 1 HOTS questions to connect past lessons with the new topic, encouraging students to recall relevant information.
+    1. what will the teacher do here? 
+    2. HOTS questions to connect past lessons with the new topic, encouraging students to recall relevant information.
         
     Header 3: . Establishing a Purpose for the Lesson. Time Limit: {part_b} minutes.
     1. 2 HOTS questions or relevant real-world scenarios that relates to the competency being addressed.

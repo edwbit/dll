@@ -157,7 +157,7 @@ with col1:
 with col2:
     strategies = ["Project-Based Learning", "Collaborative Learning", "Real-World Applications", "Technology Integration", "Differentiated Instruction"]
     selected_strategies = st.multiselect("**Teaching Strategies:**", strategies)
-    content = st.text_input("**Content:**", "required")
+    content = st.text_area("**Content:**", "required")
     past_lesson = st.text_input("**Past Lesson:**", "required")
 
 st.markdown("---")  # Horizontal divider for clarity

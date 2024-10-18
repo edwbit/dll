@@ -30,43 +30,43 @@ def generate_lesson_plan(competency, subject, grade_level, selected_strategies, 
     Use the dollowing format:
 
     Header 3: A. Reviewing or Presenting the New Lesson. Time Limit: {part_a} minutes.
-    1. what will the teacher do here? 
+    1. what will the teacher do here? (brief and concise) 
     2. HOTS questions to connect past lessons with the new topic, encouraging students to recall relevant information.
         
     Header 3: . Establishing a Purpose for the Lesson. Time Limit: {part_b} minutes.
-    1. what will the teacher do here?  
+    1. what will the teacher do here? (brief and concise)   
     2. 2 HOTS questions or relevant real-world scenarios that relates to the competency being addressed.
         
     Header 3: C. Presenting Examples/Instances of the New Lesson. Time Limit: {part_c} minutes.
-    1. what will the teacher do here? 
+    1. what will the teacher do here? (brief and concise) 
     2. List procedure of doing the task in brief anc concise manner. Utilize multimedia resources or real-life demonstrations that incorporate 21st-century skills, such as critical thinking and collaboration.
     The teacher will use appropriate strategy: {selected_strategies}.
 
     Header 3: D. Discussing New Concepts and Practicing New Skills #1. Time Limit: {part_d} minutes.
-    1. what will the teacher do here? 
+    1. what will the teacher do here? (brief and concise) 
     2. List the procedure of doing the task in brief anc concise manner considering {selected_strategies} to facilitate understanding.
     
     Header 3: E. Discussing New Concepts and Practicing New Skills #2. Time Limit: {part_e} minutes.
-    1. what will the teacher do here? 
+    1. what will the teacher do here? (brief and concise) 
     2. List the procedure of doing the task in brief anc concise manner using the appropriate strategy: {selected_strategies}.
       
     
     Header 3: F. Developing Mastery. Time Limit: {part_f} minutes.
-    1. what will the teacher do here? 
+    1. what will the teacher do here? (brief and concise) 
     2. List the procedure of doing the task in brief anc concise manner using {selected_strategies}.
         
  
     Header 3: G. Finding Practical Applications of Concepts. Time Limit: {part_g} minutes.
-    1. what will the teacher do here? 
+    1. what will the teacher do here? (brief and concise) 
     2. List the procedure of doing the task in brief anc concise manner considering concepts learned that can be applied in their lives or communities.
   
    Header 3: H. Making Generalizations and Abstractions about the Lesson. Time Limit: {part_h} minutes.
-    1. what will the teacher do here? 
+    1. what will the teacher do here? (brief and concise) 
     2. List the procedure of doing the task in brief anc concise manner.
       
 
    Header 3: I. Evaluating Learning. Time Limit: {part_i} minutes.
-    1. what will the teacher do here? 
+    1. what will the teacher do here? (brief and concise) 
     2. List the procedure of doing the task in brief anc concise manner.The teacher will assign a quiz or project that assesses understanding and application of the lesson content.
     The teacher will use formative assessments like exit tickets where students reflect on what they learned. """
     

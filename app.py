@@ -9,7 +9,7 @@ import re
 api_key = st.secrets["GROQ_API_KEY"]
 
 client = Groq(api_key=api_key)
-my_llm = "llama-3.2-90b-text-preview"
+my_llm = "llama-3.3-70b-versatile"
 
 # Function to generate the lesson plan using AI
 def generate_lesson_plan(competency, subject, grade_level, selected_strategies, content, past_lesson, part_a, part_b, part_c, part_d, part_e, part_f, part_g, part_h, part_i, language):

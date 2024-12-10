@@ -201,7 +201,7 @@ if st.button("Generate Lesson Plan"):
         st.download_button(
                 label="Download Lesson Plan (DOCX with Raw AI Output)",
                 data=docx_file,
-                file_name="lesson_plan.docx",
+                file_name=f"{competency}.docx",
                 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
             )
             
